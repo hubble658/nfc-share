@@ -73,7 +73,7 @@
     <string name="section_new_network">WIFI NETWORK</string>
     <string name="section_new_contact">CONTACT</string>
     <string name="section_saved">SAVED</string>
-    <string name="hint_saved">Tap: share  ·  Hold: options</string>
+    <string name="hint_saved">Tap: share  ·  Hold: edit</string>
     <string name="button_paste">Paste</string>
     <string name="info_text_receiver">If the other phone also has this app, a \"Copy Text\" option appears when the text arrives.</string>
     <string name="toast_contact_removed">Saved contact deleted</string>
@@ -132,4 +132,7 @@
     <string name="about_unlock_note">Both phones need to be unlocked. For security, Android doesn\'t read NFC while a phone is locked.</string>
     <string name="about_shizuku_title">Bulk import with Shizuku</string>
     <string name="about_optional">Optional</string>
+    <string name="confirm_delete_title">Delete?</string>
+    <string name="confirm_delete_message">\"%1$s\" will be removed from your saved items.</string>
+    <string name="action_cancel">Cancel</string>
 </resources>

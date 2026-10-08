@@ -8,3 +8,4 @@ build/
 /signing/
 /local.properties
 /publish.properties
+/dist/

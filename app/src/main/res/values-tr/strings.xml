@@ -68,7 +68,7 @@
     <string name="section_new_network">WIFI AĞI</string>
     <string name="section_new_contact">KİŞİ</string>
     <string name="section_saved">KAYITLILAR</string>
-    <string name="hint_saved">Dokun: paylaş  ·  Basılı tut: seçenekler</string>
+    <string name="hint_saved">Dokun: paylaş  ·  Basılı tut: düzenle</string>
     <string name="button_paste">Yapıştır</string>
     <string name="info_text_receiver">Karşı telefonda da bu uygulama yüklüyse, metin geldiğinde ekranda \"Metni Kopyala\" seçeneği çıkar.</string>
     <string name="toast_contact_removed">Kayıtlı kişi silindi</string>
@@ -124,4 +124,7 @@
     <string name="about_unlock_note">Göndermek için iki telefonun da ekran kilidi açık olmalı. Android, güvenlik gereği kilitli telefonda NFC okumaya izin vermez.</string>
     <string name="about_shizuku_title">Shizuku ile toplu aktarma</string>
     <string name="about_optional">İsteğe bağlı</string>
+    <string name="confirm_delete_title">Silinsin mi?</string>
+    <string name="confirm_delete_message">\"%1$s\" kayıtlılardan silinecek.</string>
+    <string name="action_cancel">Vazgeç</string>
 </resources>

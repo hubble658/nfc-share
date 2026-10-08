@@ -15,7 +15,7 @@ NFC Share telefonunu bir NFC etiketi gibi davrandırır. Karşı telefon onu bir
 - **Link ve yazı:** Ne yapıştırırsan yapıştır türü otomatik tanınır: YouTube, Instagram, Google Maps ya da herhangi bir link. Maps linkleri gerçek konum olarak gider.
 - **WiFi:** Bağlı olduğun ağı seç, şifresiyle birlikte paylaş. Karşı telefon tek dokunuşla ağa bağlanır, tıpkı WiFi QR kodu okutmak gibi.
 - **Kişi:** Rehberinden birini seç; adı, numarası ve e-postası kişi kartı olarak gider.
-- **Paylaştığın her şey kaydedilir:** Kayıtlı bir öğeye dokunarak tekrar paylaşabilirsin. Basılı tutunca düzenleme, kopyalama ve silme seçenekleri çıkar.
+- **Paylaştığın her şey kaydedilir:** Kayıtlı bir öğeye dokunarak tekrar paylaşabilirsin. Yanındaki çöp kutusu ikonuyla silebilir, basılı tutarak düzenleyebilir ya da kopyalayabilirsin.
 - **Süre sınırı:** Paylaşım 20 sn, 1 dk ya da 5 dk sonra kendiliğinden durur; istersen süresiz de yapabilirsin. Geri sayım ve okunma sayacı neler olduğunu gösterir.
 - **Ana ekran widget'ları:** Biri seçtiğin kayıtlı öğeyi tek dokunuşla paylaşır, diğeri en son kopyaladığın şeyi.
 - **Paylaş menüsü:** Herhangi bir uygulamanın (YouTube, Chrome, Instagram…) "Paylaş" menüsünden NFC Share'i seç, paylaşım hemen başlar.

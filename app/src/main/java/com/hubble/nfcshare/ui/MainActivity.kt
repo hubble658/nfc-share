@@ -35,6 +35,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.ScrollView
@@ -472,6 +473,16 @@ class MainActivity : BaseActivity() {
         onDelete: () -> Unit,
     ) {
         val isActive = isSharing && key == ShareStore.activeKey(this)
+
+        // Row = tappable label (share) + trash button (delete, with confirmation)
+        val row = LinearLayout(this)
+        row.orientation = LinearLayout.HORIZONTAL
+        row.gravity = Gravity.CENTER_VERTICAL
+        row.setBackgroundResource(if (isActive) R.drawable.bg_saved_row_active else R.drawable.bg_saved_row)
+        row.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT).also {
+            it.topMargin = resources.getDimensionPixelSize(R.dimen.size_margin_vertical_buttons)
+        }
+
         val button = Button(this)
         button.text = label
         button.isAllCaps = false
@@ -479,27 +490,51 @@ class MainActivity : BaseActivity() {
         button.maxLines = 1
         button.gravity = Gravity.CENTER_VERTICAL or Gravity.START
         button.setTextColor(ContextCompat.getColor(this, R.color.color_text))
-        button.setBackgroundResource(if (isActive) R.drawable.bg_saved_row_active else R.drawable.bg_saved_row)
+        button.setBackgroundResource(themeDrawable(android.R.attr.selectableItemBackground))
         button.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.size_text_buttons))
         button.minimumHeight = resources.getDimensionPixelSize(R.dimen.size_button_min_height)
-        button.setPadding(dp(14), 0, dp(14), 0)
+        button.setPadding(dp(14), 0, dp(8), 0)
         button.compoundDrawablePadding = dp(12)
         button.setCompoundDrawablesWithIntrinsicBounds(
             tintedIcon(iconRes, if (isActive) R.color.color_status_active else R.color.color_text), null, null, null,
         )
-        button.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT).also {
-            it.topMargin = resources.getDimensionPixelSize(R.dimen.size_margin_vertical_buttons)
-        }
         button.setOnClickListener { onClick() }
         button.setOnLongClickListener {
-            showSavedItemMenu(label, copyText, onEdit, onDelete)
+            showSavedItemMenu(label, copyText, onEdit)
             true
         }
-        container.addView(button)
+        row.addView(button, LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f))
+
+        val trash = ImageButton(this)
+        trash.setImageResource(R.drawable.ic_action_delete)
+        trash.setColorFilter(ContextCompat.getColor(this, R.color.color_section_title))
+        trash.setBackgroundResource(themeDrawable(android.R.attr.selectableItemBackgroundBorderless))
+        trash.contentDescription = getString(R.string.action_delete)
+        trash.setOnClickListener { confirmDelete(label, onDelete) }
+        val touch = resources.getDimensionPixelSize(R.dimen.size_button_min_height)
+        row.addView(trash, LinearLayout.LayoutParams(touch, touch).also { it.marginEnd = dp(4) })
+
+        container.addView(row)
     }
 
-    private fun showSavedItemMenu(title: String, copyText: String, onEdit: () -> Unit, onDelete: () -> Unit) {
-        val actions = arrayOf(getString(R.string.action_edit), getString(R.string.action_copy), getString(R.string.action_delete))
+    private fun themeDrawable(attr: Int): Int {
+        val value = TypedValue()
+        theme.resolveAttribute(attr, value, true)
+        return value.resourceId
+    }
+
+    private fun confirmDelete(label: String, onDelete: () -> Unit) {
+        AlertDialog.Builder(this)
+            .setTitle(R.string.confirm_delete_title)
+            .setMessage(getString(R.string.confirm_delete_message, label))
+            .setPositiveButton(R.string.action_delete) { _, _ -> onDelete() }
+            .setNegativeButton(R.string.action_cancel, null)
+            .show()
+    }
+
+    // Long-press menu: edit / copy. Deleting has its own trash button on the row.
+    private fun showSavedItemMenu(title: String, copyText: String, onEdit: () -> Unit) {
+        val actions = arrayOf(getString(R.string.action_edit), getString(R.string.action_copy))
         AlertDialog.Builder(this)
             .setTitle(title)
             .setItems(actions) { _, which ->
@@ -512,7 +547,6 @@ class MainActivity : BaseActivity() {
                     1 -> {
                         ClipboardCopy.copy(this, title, copyText)
                     }
-                    2 -> onDelete()
                 }
             }
             .show()

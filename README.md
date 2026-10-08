@@ -11,7 +11,7 @@ NFC Share makes your phone act like an NFC tag. The other phone reads it the sam
 - **Links and text.** Paste anything and the type is detected automatically: YouTube, Instagram, Google Maps or any other URL. A Maps link is sent as a real location.
 - **WiFi.** Pick the network you're connected to and share it with its password. The other phone joins the network in one tap, like scanning a WiFi QR code.
 - **Contacts.** Pick someone from your contacts; their name, phone number and email are sent as a contact card.
-- **Everything you share is saved.** Tap a saved item to share it again. Hold it to edit, copy or delete it.
+- **Everything you share is saved.** Tap a saved item to share it again, tap its trash icon to delete it, or hold it to edit or copy it.
 - **Time limit.** Sharing stops by itself after 20 s, 1 min or 5 min, or you can choose no limit. A countdown and a read counter show what's happening.
 - **Home-screen widgets.** One shares a chosen saved item with one tap; the other shares whatever you last copied.
 - **Share sheet.** Choose NFC Share from any app's "Share" menu (YouTube, Chrome, Instagram…) and it starts sharing right away.
