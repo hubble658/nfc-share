@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/received_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#99000000"
+    android:padding="@dimen/size_margin_screen">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/bg_card"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="@dimen/size_card_padding">
+
+        <TextView
+            style="@style/SectionTitle"
+            android:text="@string/received_title"
+            />
+
+        <TextView
+            android:id="@+id/text_received"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:maxLines="14"
+            android:scrollbars="vertical"
+            android:textIsSelectable="true"
+            android:textColor="@color/color_text"
+            android:textSize="@dimen/size_text_status_value"
+            />
+
+        <Button
+            android:id="@+id/button_copy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_margin_section_top"
+            android:minHeight="@dimen/size_button_min_height"
+            android:background="@drawable/bg_button_primary"
+            android:textAllCaps="false"
+            android:textColor="@color/color_on_primary"
+            android:textSize="@dimen/size_text_buttons"
+            android:textStyle="bold"
+            android:text="@string/button_copy"
+            />
+
+        <Button
+            android:id="@+id/button_open_link"
+            style="@style/OutlineButton"
+            android:layout_marginTop="@dimen/size_margin_vertical_buttons"
+            android:text="@string/button_open_link"
+            android:visibility="gone"
+            />
+
+        <Button
+            android:id="@+id/button_close"
+            style="@style/OutlineButton"
+            android:layout_marginTop="@dimen/size_margin_vertical_buttons"
+            android:text="@string/button_close"
+            />
+
+    </LinearLayout>
+
+</FrameLayout>

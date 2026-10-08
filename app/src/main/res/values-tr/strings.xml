@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Turkish UI, used when the phone's language is Turkish. -->
+<resources>
+    <string name="header_subtitle">Telefonunu başka bir telefona yaklaştırarak link, WiFi ağı ya da kişi gönder.</string>
+    <string name="status_value_empty">Şu an hiçbir şey paylaşılmıyor</string>
+    <string name="status_value_uri">Link: %1$s</string>
+    <string name="status_value_text">Metin: %1$s</string>
+    <string name="status_value_geo">Konum: %1$s, %2$s</string>
+    <string name="status_value_wifi">WiFi: %1$s</string>
+    <string name="status_value_contact">Kişi: %1$s</string>
+
+    <string name="tab_link">Link</string>
+    <string name="tab_wifi">WiFi</string>
+    <string name="tab_contact">Kişi</string>
+
+    <string name="hint_link">Link ya da yazı yaz veya yapıştır</string>
+    <string name="toast_link_removed">Kayıtlı link silindi</string>
+    <string name="label_wifi_open_suffix"> (şifresiz)</string>
+    <string name="hint_wifi_ssid">Ağ adı</string>
+    <string name="hint_wifi_password">Şifre (en az 8 karakter)</string>
+    <string name="label_wifi_open">Şifresiz ağ</string>
+    <string name="button_use_current_wifi">Bağlı Olduğun WiFi\'yi Kullan</string>
+    <string name="info_wifi_password_manual">Şifreyi bir kez yazman yeter, bu ağ için hatırlanır.</string>
+    <string name="error_wifi_permission_denied">Bağlı ağın adını görmek için konum izni gerekiyor</string>
+    <string name="error_wifi_not_connected">Şu an bir WiFi ağına bağlı değilsin</string>
+    <string name="toast_network_removed">Kayıtlı ağ silindi</string>
+
+    <string name="button_pick_contact">Kişilerden Seç</string>
+    <string name="hint_contact_first">Ad</string>
+    <string name="hint_contact_last">Soyad (isteğe bağlı)</string>
+    <string name="hint_contact_phone">Telefon (isteğe bağlı)</string>
+    <string name="hint_contact_email">E-posta (isteğe bağlı)</string>
+
+    <string name="button_share">PAYLAŞ</string>
+    <string name="button_clear">DURDUR</string>
+
+    <string name="error_empty_url">Önce bir link ya da yazı gir</string>
+    <string name="error_invalid_url">Bu link tanınmadı ya da çok uzun</string>
+    <string name="error_invalid_phone">Geçerli bir telefon numarası gir</string>
+    <string name="error_empty_ssid">Ağ adını yaz (en fazla 32 karakter)</string>
+    <string name="error_short_password">Şifre 8 ile 64 karakter arasında olmalı</string>
+    <string name="error_empty_first_name">En azından bir ad yaz</string>
+    <string name="error_invalid_email">E-posta adresi geçersiz</string>
+    <string name="error_location_services_off">Konum kapalı. Bağlı ağı görmek için telefonun konumunu aç.</string>
+    <string name="error_contacts_permission_denied">Kişilerden seçmek için rehber izni vermen gerekiyor</string>
+
+    <string name="toast_cleared">Paylaşım durduruldu</string>
+    <string name="toast_shared">Paylaşım başladı</string>
+
+    <string name="widget_config_title">Widget\'ta ne paylaşılsın?</string>
+    <string name="widget_config_empty">Henüz kayıtlı bir şey yok. Uygulamada bir link, ağ ya da kişi paylaş; otomatik kaydedilir.</string>
+    <string name="widget_not_configured">Seçilmedi</string>
+    <string name="widget_clipboard_label">Kopyalananı Paylaş</string>
+    <string name="error_clipboard_empty">Kopyalanmış bir link ya da yazı yok</string>
+
+    <string name="status_label_idle">YAYIN YOK</string>
+    <string name="status_label_active">YAYINDA</string>
+    <string name="status_reads_none">Henüz okunmadı. İki telefonun arkasını birbirine yaklaştır.</string>
+    <string name="status_reads_count">%1$d kez okundu · paylaşım sürüyor</string>
+    <string name="toast_read">Okundu</string>
+    <string name="toast_expired">Süre doldu, paylaşım durdu</string>
+    <string name="label_duration">SÜRE</string>
+    <string name="duration_seconds">%1$d sn</string>
+    <string name="duration_minutes">%1$d dk</string>
+    <string name="duration_unlimited">Süresiz</string>
+
+    <string name="section_new_link">LİNK YA DA YAZI</string>
+    <string name="section_new_network">WIFI AĞI</string>
+    <string name="section_new_contact">KİŞİ</string>
+    <string name="section_saved">KAYITLILAR</string>
+    <string name="hint_saved">Dokun: paylaş  ·  Basılı tut: seçenekler</string>
+    <string name="button_paste">Yapıştır</string>
+    <string name="info_text_receiver">Karşı telefonda da bu uygulama yüklüyse, metin geldiğinde ekranda \"Metni Kopyala\" seçeneği çıkar.</string>
+    <string name="toast_contact_removed">Kayıtlı kişi silindi</string>
+
+    <string name="button_shizuku_import">Tüm WiFi Ağlarını Şifreleriyle Aktar</string>
+    <string name="shizuku_status_unsupported">Bu özellik için Android 11 ya da üstü gerekiyor.</string>
+    <string name="shizuku_status_not_installed">Shizuku uygulamasıyla telefonda kayıtlı WiFi ağlarının hepsini doğrudan aktarabilirsin. Root gerekmez.</string>
+    <string name="shizuku_status_not_running">Shizuku yüklü ama kapalı. Butona bas, Shizuku açılsın. Orada \"Başlat\"a bas ve buraya geri dön.</string>
+    <string name="shizuku_status_no_permission">Shizuku açık. Butona basınca NFC Share için izin istenecek.</string>
+    <string name="shizuku_status_ready">✓ Shizuku hazır ✓</string>
+    <string name="toast_shizuku_imported">%1$d ağ şifresiyle aktarıldı (%2$d yeni)</string>
+    <string name="error_shizuku_failed">Ağlar aktarılamadı: %1$s</string>
+    <string name="error_shizuku_denied">Shizuku izni verilmedi</string>
+
+    <string name="received_title">Gelen Yazı</string>
+    <string name="button_copy">Metni Kopyala</string>
+    <string name="button_open_link">Linki Aç</string>
+    <string name="button_close">Kapat</string>
+    <string name="toast_copied">Kopyalandı</string>
+    <string name="widget_saved_item_name">Kayıtlı Öğe</string>
+    <string name="widget_saved_item_description">Kayıtlı bir link, ağ ya da kişiyi tek dokunuşla paylaş veya durdur</string>
+    <string name="widget_clipboard_name">Kopyalananı Paylaş</string>
+    <string name="widget_clipboard_description">Kopyaladığın link ya da metni tek dokunuşla NFC ile paylaş</string>
+    <string name="action_edit">Düzenle</string>
+    <string name="action_copy">Kopyala</string>
+    <string name="action_delete">Sil</string>
+    <string name="toast_editing">Değiştir ve PAYLAŞ\'a bas, eski kaydın yerine geçer</string>
+
+    <string name="button_settings">Ayarlar</string>
+    <string name="about_title">Ayarlar</string>
+    <string name="about_version">NFC Share · Sürüm %1$s</string>
+    <string name="about_section_privacy">GİZLİLİK</string>
+    <string name="about_section_permissions">İZİNLER NEDEN İSTENİYOR</string>
+    <string name="about_back">Geri</string>
+    <string name="about_privacy_internet_title">İnternet izni yok</string>
+    <string name="about_privacy_internet_body">Kaydettiğin linkler, WiFi şifreleri ve kişiler sadece bu telefonda saklanır. Hiçbir sunucuya gönderilmez.</string>
+    <string name="about_privacy_nfc_title">Sadece yaklaştırınca gider</string>
+    <string name="about_privacy_nfc_body">Veriler yalnızca telefonunu başka bir cihaza yaklaştırdığında NFC ile aktarılır. Paylaşım, seçtiğin süre dolunca kendiliğinden durur.</string>
+    <string name="about_permission_location_title">Konum</string>
+    <string name="about_permission_location_body">Android, bağlı olduğun WiFi ağının adını sadece konum izni olan uygulamalara gösterir. NFC Share konumunu okumaz ve kaydetmez.</string>
+    <string name="about_permission_contacts_title">Kişiler</string>
+    <string name="about_permission_contacts_body">Sadece \"Kişilerden Seç\" dediğinde, seçtiğin kişinin adını, numarasını ve e-postasını doldurmak için kullanılır.</string>
+    <string name="about_permission_nfc_title">NFC</string>
+    <string name="about_permission_nfc_body">Seçtiğin şeyi yaklaştırdığın telefona göndermek için kullanılır.</string>
+    <string name="about_permission_shizuku_title">Shizuku (isteğe bağlı)</string>
+    <string name="about_permission_shizuku_body">Telefonda kayıtlı WiFi ağlarının hepsini doğrudan aktarmak için kullanılır. Bir kez içe aktarıldıktan sonra Shizuku silinebilir.</string>
+    <string name="nfc_off">NFC kapalı. Açmadan hiçbir şey gönderilemez.</string>
+    <string name="nfc_missing">Bu telefonda NFC yok, bu yüzden paylaşım yapılamaz.</string>
+    <string name="nfc_no_hce">Bu telefonun NFC\'si başka cihazlara veri göndermeyi desteklemiyor.</string>
+    <string name="nfc_open_settings">NFC\'yi Aç</string>
+    <string name="about_section_wifi">WIFI ŞİFRELERİ</string>
+    <string name="link_shizuku_settings">Kayıtlı tüm WiFi ağlarını Shizuku ile aktarmak için Ayarlar\'a bak ›</string>
+    <string name="about_unlock_note">Göndermek için iki telefonun da ekran kilidi açık olmalı. Android, güvenlik gereği kilitli telefonda NFC okumaya izin vermez.</string>
+    <string name="about_shizuku_title">Shizuku ile toplu aktarma</string>
+    <string name="about_optional">İsteğe bağlı</string>
+</resources>

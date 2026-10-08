@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/about_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_background_screen">
+
+    <!-- Top bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="4dp"
+        android:paddingEnd="@dimen/size_margin_screen">
+
+        <ImageButton
+            android:id="@+id/button_about_back"
+            android:layout_width="@dimen/size_button_min_height"
+            android:layout_height="@dimen/size_button_min_height"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_action_back"
+            android:tint="@color/color_text"
+            android:contentDescription="@string/about_back"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/about_title"
+            android:textColor="@color/color_text"
+            android:textSize="@dimen/size_text_header_title"
+            android:textStyle="bold"
+            />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/size_margin_screen"
+            android:paddingEnd="@dimen/size_margin_screen"
+            android:paddingTop="8dp"
+            android:paddingBottom="@dimen/size_margin_screen">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="3dp"
+                android:text="@string/header_subtitle"
+                android:textColor="@color/color_text"
+                android:textSize="@dimen/size_text_buttons"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="3dp"
+                android:text="@string/about_unlock_note"
+                android:textColor="@color/color_section_title"
+                android:textSize="@dimen/size_text_body"
+                />
+
+            <TextView
+                style="@style/SectionTitle"
+                android:layout_marginTop="28dp"
+                android:text="@string/about_section_privacy"
+                />
+
+            <LinearLayout
+                android:id="@+id/container_about_privacy"
+                style="@style/AboutGroup"
+                />
+
+            <TextView
+                style="@style/SectionTitle"
+                android:layout_marginTop="28dp"
+                android:text="@string/about_section_permissions"
+                />
+
+            <LinearLayout
+                android:id="@+id/container_about_permissions"
+                style="@style/AboutGroup"
+                />
+
+            <!-- Advanced, optional: kept at the bottom -->
+            <TextView
+                style="@style/SectionTitle"
+                android:layout_marginTop="28dp"
+                android:text="@string/about_section_wifi"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:background="@drawable/bg_card"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_type_wifi"
+                        android:tint="@color/color_primary"
+                        android:importantForAccessibility="no"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:text="@string/about_shizuku_title"
+                        android:textColor="@color/color_text"
+                        android:textSize="@dimen/size_text_buttons"
+                        android:textStyle="bold"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_pill"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:text="@string/about_optional"
+                        android:textColor="@color/color_on_primary_container"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/text_shizuku_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="40dp"
+                    android:lineSpacingExtra="3dp"
+                    android:textColor="@color/color_section_title"
+                    android:textSize="@dimen/size_text_body"
+                    />
+
+                <Button
+                    android:id="@+id/button_shizuku_import"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:minHeight="@dimen/size_button_min_height"
+                    android:background="@drawable/bg_button_tonal"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_on_primary_container"
+                    android:textSize="@dimen/size_text_buttons"
+                    android:textStyle="bold"
+                    android:text="@string/button_shizuku_import"
+                    />
+
+            </LinearLayout>
+
+            <!-- Footer: version + project link -->
+            <TextView
+                android:id="@+id/text_about_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:gravity="center"
+                android:textColor="@color/color_hint"
+                android:textSize="@dimen/size_text_error"
+                />
+
+            <TextView
+                android:id="@+id/button_about_github"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:minHeight="@dimen/size_button_min_height"
+                android:gravity="center"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:text="@string/about_button_github"
+                android:textColor="@color/color_primary"
+                android:textSize="@dimen/size_text_buttons"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

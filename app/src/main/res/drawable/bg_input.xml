@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Text fields: outlined + transparent, clearly different from the filled saved-item rows -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/color_input_fill" />
+            <stroke
+                android:width="2dp"
+                android:color="@color/color_primary" />
+            <corners android:radius="@dimen/size_corner_radius_button" />
+            <padding
+                android:left="12dp"
+                android:right="12dp"
+                android:top="12dp"
+                android:bottom="12dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/color_input_fill" />
+            <stroke
+                android:width="1.5dp"
+                android:color="@color/color_input_stroke" />
+            <corners android:radius="@dimen/size_corner_radius_button" />
+            <padding
+                android:left="12dp"
+                android:right="12dp"
+                android:top="12dp"
+                android:bottom="12dp" />
+        </shape>
+    </item>
+</selector>

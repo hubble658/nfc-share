@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_background_screen"
+    tools:context=".ui.MainActivity">
+
+    <ScrollView
+        android:id="@+id/scroll_main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/size_margin_screen">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/header_title"
+                    android:textColor="@color/color_text"
+                    android:textSize="@dimen/size_text_header_title"
+                    android:textStyle="bold"
+                    />
+
+                <ImageButton
+                    android:id="@+id/button_settings"
+                    android:layout_width="@dimen/size_button_min_height"
+                    android:layout_height="@dimen/size_button_min_height"
+                    android:background="@drawable/bg_button_outline"
+                    android:src="@drawable/ic_action_settings"
+                    android:tint="@color/color_text"
+                    android:contentDescription="@string/button_settings"
+                    />
+
+            </LinearLayout>
+
+            <!-- Shown only when NFC is off / missing: otherwise sharing silently does nothing -->
+            <LinearLayout
+                android:id="@+id/banner_nfc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_margin_section_top"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_banner_warning"
+                android:paddingStart="@dimen/size_card_padding"
+                android:paddingEnd="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_info_nfc_logo"
+                    android:tint="@color/color_danger"
+                    android:importantForAccessibility="no"
+                    />
+
+                <TextView
+                    android:id="@+id/text_banner_nfc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="@string/nfc_off"
+                    android:textColor="@color/color_text"
+                    android:textSize="@dimen/size_text_body"
+                    />
+
+                <Button
+                    android:id="@+id/button_banner_nfc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/size_button_min_height"
+                    android:minWidth="0dp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:background="@drawable/bg_button_primary"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_on_primary"
+                    android:textSize="@dimen/size_text_buttons"
+                    android:textStyle="bold"
+                    android:text="@string/nfc_open_settings"
+                    />
+
+            </LinearLayout>
+
+            <!-- Status card: pulsing dot + countdown while broadcasting -->
+            <LinearLayout
+                android:id="@+id/card_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_margin_section_top"
+                android:orientation="vertical"
+                android:background="@drawable/bg_card"
+                android:padding="@dimen/size_card_padding">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <FrameLayout
+                        android:layout_width="22dp"
+                        android:layout_height="22dp">
+
+                        <View
+                            android:id="@+id/view_status_pulse"
+                            android:layout_width="@dimen/size_status_dot"
+                            android:layout_height="@dimen/size_status_dot"
+                            android:layout_gravity="center"
+                            android:background="@drawable/dot_status_active"
+                            android:alpha="0"
+                            />
+
+                        <View
+                            android:id="@+id/view_status_dot"
+                            android:layout_width="@dimen/size_status_dot"
+                            android:layout_height="@dimen/size_status_dot"
+                            android:layout_gravity="center"
+                            android:background="@drawable/dot_status_inactive"
+                            />
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/text_status_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        android:text="@string/status_label_idle"
+                        android:textColor="@color/color_section_title"
+                        android:textSize="@dimen/size_text_status_label"
+                        android:textStyle="bold"
+                        />
+
+                    <TextView
+                        android:id="@+id/text_status_timer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color_status_active"
+                        android:textSize="@dimen/size_text_status_value"
+                        android:textStyle="bold"
+                        android:fontFamily="monospace"
+                        android:visibility="gone"
+                        tools:text="0:17"
+                        tools:visibility="visible"
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/text_status_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:maxLines="3"
+                    android:ellipsize="end"
+                    android:text="@string/status_value_empty"
+                    android:textColor="@color/color_text"
+                    android:textSize="@dimen/size_text_status_value"
+                    />
+
+                <ProgressBar
+                    android:id="@+id/progress_status"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="10dp"
+                    android:max="1000"
+                    android:progressDrawable="@drawable/progress_status"
+                    android:visibility="gone"
+                    tools:progress="600"
+                    tools:visibility="visible"
+                    />
+
+                <TextView
+                    android:id="@+id/text_status_reads"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/color_section_title"
+                    android:textSize="@dimen/size_text_error"
+                    android:visibility="gone"
+                    tools:text="@string/status_reads_none"
+                    tools:visibility="visible"
+                    />
+
+                <TextView
+                    android:id="@+id/text_status_text_hint"
+                    style="@style/InfoText"
+                    android:text="@string/info_text_receiver"
+                    android:visibility="gone"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/label_duration"
+                        android:textColor="@color/color_section_title"
+                        android:textSize="@dimen/size_text_status_label"
+                        android:textStyle="bold"
+                        />
+
+                    <LinearLayout
+                        android:id="@+id/container_duration"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_margin_section_top"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/tab_link"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="@dimen/size_margin_horizontal_buttons"
+                    android:minHeight="@dimen/size_button_min_height"
+                    android:background="@drawable/bg_button_primary"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_on_primary"
+                    android:textSize="@dimen/size_text_buttons"
+                    android:textStyle="bold"
+                    android:text="@string/tab_link"
+                    />
+
+                <Button
+                    android:id="@+id/tab_wifi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/size_margin_horizontal_buttons"
+                    android:layout_marginEnd="@dimen/size_margin_horizontal_buttons"
+                    android:minHeight="@dimen/size_button_min_height"
+                    android:background="@drawable/bg_button_outline"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_text"
+                    android:textSize="@dimen/size_text_buttons"
+                    android:textStyle="bold"
+                    android:text="@string/tab_wifi"
+                    />
+
+                <Button
+                    android:id="@+id/tab_contact"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/size_margin_horizontal_buttons"
+                    android:minHeight="@dimen/size_button_min_height"
+                    android:background="@drawable/bg_button_outline"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_text"
+                    android:textSize="@dimen/size_text_buttons"
+                    android:textStyle="bold"
+                    android:text="@string/tab_contact"
+                    />
+
+            </LinearLayout>
+
+            <!-- Link (also handles maps links / plain text) -->
+            <LinearLayout
+                android:id="@+id/group_link"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_margin_section_top"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    style="@style/SectionTitle"
+                    android:text="@string/section_new_link"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_margin_vertical_buttons"
+                    android:orientation="horizontal"
+                    android:gravity="top">
+
+                    <EditText
+                        android:id="@+id/edit_link"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:minHeight="@dimen/size_button_min_height"
+                        android:background="@drawable/bg_input"
+                        android:hint="@string/hint_link"
+                        android:textCursorDrawable="@drawable/cursor_primary"
+                        android:inputType="textUri|textMultiLine"
+                        android:maxLines="4"
+                        android:textColor="@color/color_text"
+                        android:textColorHint="@color/color_hint"
+                        android:textSize="@dimen/size_text_buttons"
+                        />
+
+                    <ImageButton
+                        android:id="@+id/button_paste_link"
+                        android:layout_width="@dimen/size_button_min_height"
+                        android:layout_height="@dimen/size_button_min_height"
+                        android:layout_marginStart="@dimen/size_margin_horizontal_buttons"
+                        android:background="@drawable/bg_button_outline"
+                        android:src="@drawable/ic_action_paste"
+                        android:tint="@color/color_text"
+                        android:contentDescription="@string/button_paste"
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/text_link_hint"
+                    style="@style/InfoText"
+                    android:text="@string/info_text_receiver"
+                    android:visibility="gone"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/label_saved_links"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_margin_section_top"
+                    android:orientation="horizontal"
+                    android:gravity="bottom"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/SectionTitle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/section_saved"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hint_saved"
+                        android:textColor="@color/color_hint"
+                        android:textSize="@dimen/size_text_error"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/list_saved_links"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    />
+
+            </LinearLayout>
+
+            <!-- WiFi -->
+            <LinearLayout
+                android:id="@+id/group_wifi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_margin_section_top"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/SectionTitle"
+                    android:text="@string/section_new_network"
+                    />
+
+                <Button
+                    android:id="@+id/button_use_current_wifi"
+                    style="@style/OutlineButton"
+                    android:layout_marginTop="@dimen/size_margin_vertical_buttons"
+                    android:text="@string/button_use_current_wifi"
+                    />
+
+                <EditText
+                    android:id="@+id/edit_wifi_ssid"
+                    style="@style/InputField"
+                    android:hint="@string/hint_wifi_ssid"
+                    android:inputType="text"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_margin_vertical_buttons"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <Switch
+                        android:id="@+id/switch_wifi_open"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/label_wifi_open"
+                        android:textColor="@color/color_text"
+                        android:textSize="@dimen/size_text_buttons"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/group_wifi_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <!-- Deliberately visible (not dotted): you're about to hand it to someone anyway -->
+                    <EditText
+                        android:id="@+id/edit_wifi_password"
+                        style="@style/InputField"
+                        android:hint="@string/hint_wifi_password"
+                        android:inputType="textVisiblePassword"
+                        android:fontFamily="monospace"
+                        />
+
+                    <TextView
+                        style="@style/InfoText"
+                        android:text="@string/info_wifi_password_manual"
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/link_shizuku_settings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:minHeight="@dimen/size_button_min_height"
+                    android:gravity="center_vertical"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:text="@string/link_shizuku_settings"
+                    android:textColor="@color/color_primary"
+                    android:textSize="@dimen/size_text_error"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/label_saved_networks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_margin_section_top"
+                    android:orientation="horizontal"
+                    android:gravity="bottom"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/SectionTitle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/section_saved"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hint_saved"
+                        android:textColor="@color/color_hint"
+                        android:textSize="@dimen/size_text_error"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/list_saved_networks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    />
+
+            </LinearLayout>
+
+            <!-- Contact -->
+            <LinearLayout
+                android:id="@+id/group_contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_margin_section_top"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/SectionTitle"
+                    android:text="@string/section_new_contact"
+                    />
+
+                <Button
+                    android:id="@+id/button_pick_contact"
+                    style="@style/OutlineButton"
+                    android:layout_marginTop="@dimen/size_margin_vertical_buttons"
+                    android:text="@string/button_pick_contact"
+                    />
+
+                <EditText
+                    android:id="@+id/edit_contact_first"
+                    style="@style/InputField"
+                    android:hint="@string/hint_contact_first"
+                    android:inputType="textPersonName"
+                    />
+
+                <EditText
+                    android:id="@+id/edit_contact_last"
+                    style="@style/InputField"
+                    android:hint="@string/hint_contact_last"
+                    android:inputType="textPersonName"
+                    />
+
+                <EditText
+                    android:id="@+id/edit_contact_phone"
+                    style="@style/InputField"
+                    android:hint="@string/hint_contact_phone"
+                    android:inputType="phone"
+                    />
+
+                <EditText
+                    android:id="@+id/edit_contact_email"
+                    style="@style/InputField"
+                    android:hint="@string/hint_contact_email"
+                    android:inputType="textEmailAddress"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/label_saved_contacts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_margin_section_top"
+                    android:orientation="horizontal"
+                    android:gravity="bottom"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/SectionTitle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/section_saved"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hint_saved"
+                        android:textColor="@color/color_hint"
+                        android:textSize="@dimen/size_text_error"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/list_saved_contacts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Bottom bar stays pinned (and rises with the keyboard) -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_outline"
+        />
+
+    <LinearLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/size_margin_screen"
+        android:paddingEnd="@dimen/size_margin_screen"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/text_field_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:textColor="@color/color_danger"
+            android:textSize="@dimen/size_text_error"
+            android:visibility="gone"
+            tools:text="@string/error_invalid_url"
+            tools:visibility="visible"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_share"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginEnd="@dimen/size_margin_horizontal_buttons"
+                android:minHeight="@dimen/size_button_min_height"
+                android:background="@drawable/bg_button_primary"
+                android:textAllCaps="false"
+                android:textColor="@color/color_on_primary"
+                android:textSize="@dimen/size_text_buttons"
+                android:textStyle="bold"
+                android:text="@string/button_share"
+                />
+
+            <Button
+                android:id="@+id/button_clear"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/size_margin_horizontal_buttons"
+                android:minHeight="@dimen/size_button_min_height"
+                android:background="@drawable/bg_button_danger"
+                android:textAllCaps="false"
+                android:textColor="@color/color_danger"
+                android:textSize="@dimen/size_text_buttons"
+                android:textStyle="bold"
+                android:text="@string/button_clear"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

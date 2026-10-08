@@ -1,139 +1,69 @@
-<hr>
-<h5> [Readme in english 🇬🇧] <a href="./README_RU.md"> [Описание на русском 🇷🇺] </a> </h5>
-<hr>
+<h5>[English] · <a href="./README.tr.md">[Türkçe]</a></h5>
 
-# NDEF emulator
+# NFC Share
 
-- [Description](#description)
-- [Usage](#usage)
-- [Supported message types](#supported-message-types)
-- [Code examples](#code-examples)
-- [Demo](#demo)
-- [Support](#support)
-- [Feedback](#feedback)
-- [License](#license)
+Hold your phone against another phone to send a **link**, a **WiFi network** (with its password) or a **contact** over NFC. No app is needed on the receiving phone.
 
-## Description
+NFC Share makes your phone act like an NFC tag. The other phone reads it the same way it would read a sticker or a card: a link opens in its app (YouTube links open in YouTube, Maps links in Maps), a WiFi network shows a "connect" prompt, and a contact opens the "add contact" screen.
 
-Tiny and effective library for Android that allows you to emulate NDEF formatted messages via Android device NFC antenna, using the [Android host card emulation API](https://developer.android.com/develop/connectivity/nfc/hce).
+## Features
 
-The library is written in Kotlin and has no extra dependencies.
+- **Links and text.** Paste anything and the type is detected automatically: YouTube, Instagram, Google Maps or any other URL. A Maps link is sent as a real location.
+- **WiFi.** Pick the network you're connected to and share it with its password. The other phone joins the network in one tap, like scanning a WiFi QR code.
+- **Contacts.** Pick someone from your contacts; their name, phone number and email are sent as a contact card.
+- **Everything you share is saved.** Tap a saved item to share it again. Hold it to edit, copy or delete it.
+- **Time limit.** Sharing stops by itself after 20 s, 1 min or 5 min, or you can choose no limit. A countdown and a read counter show what's happening.
+- **Home-screen widgets.** One shares a chosen saved item with one tap; the other shares whatever you last copied.
+- **Share sheet.** Choose NFC Share from any app's "Share" menu (YouTube, Chrome, Instagram…) and it starts sharing right away.
+- **Receiving text.** Android shows plain text from NFC as read-only. If the receiving phone also has NFC Share, the text opens with a "Copy Text" button.
+- **English and Turkish.**
 
-This library emulates the "NFC Forum Type 4" tag that contains an NDEF-formatted message.
-That type of tag meets all the technical requirements and fits all the restrictions to be emulated via the Android HCE interface.
-It is also natively supported in most of the software products that can read NDEF-formatted messages via NFC, and it is also natively supported on both mobile operating systems, Android and iOS.
+## Privacy
 
-This repository contains the library itself (**ndefemulation**) and the demo application (**demo**).
+**NFC Share does not collect any data.** The app has no internet permission, so it can't send anything anywhere. Everything you save (links, WiFi passwords, contacts) stays on your phone. Data only leaves the phone over NFC, when you hold it against another device.
 
-## Usage
+### Why each permission is requested
 
-To use the library in your project, simply add it to your dependencies in the `build.gradle` build script:
-```
-implementation 'com.luigivampa92:ndefemulation-android:1.0.0'
-```
+| Permission | Why |
+|---|---|
+| Location | Android only reveals the name of the connected WiFi network to apps with location permission. NFC Share never reads or stores your location. |
+| Contacts | Only used when you tap "Pick From Contacts", to fill in that contact's name, number and email. |
+| NFC | To send what you picked to the phone you hold yours against. |
+| Shizuku (optional) | See below. |
 
-All actions are performed through the `NdefEmulation` class.
-This class contains property `currentEmulatedNdefData` (or `getCurrentEmulatedNdefData()`/`setCurrentEmulatedNdefData()` methods if you use Java) that is used to set the data that must be emulated.
-You will need the `Context` object to set the current emulated NDEF message or to disable the emulation.
-The class has the constructor that accepts the `Context`.
-You can create and use the `NdefEmulation` object in any Android component (Activity, Service, etc) or by providing the `Context` object via the DI.
+## Importing all saved WiFi passwords (optional)
 
-The library interface is very simple and basically fits in just a single line of code.
+Android doesn't let normal apps read saved WiFi passwords. The first time you share a network, you type its password once and NFC Share remembers it.
 
-To enable the emulation, create the required NDEF message object and set it to the `currentEmulatedNdefData` property of `NdefEmulation`:
-```
-NdefEmulation(context).currentEmulatedNdefData = UriNdefData("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
-```
+To import every saved network at once, you can use [Shizuku](https://shizuku.rikka.app/). Shizuku runs with the same rights as ADB (USB debugging) and needs no root. Start it once over wireless debugging, then go to **Settings → Bulk import with Shizuku** in NFC Share. After you have imported once, you can remove Shizuku. Requires Android 11 or newer.
 
-To disable the emulation of NDEF messages simply set `null` to the `currentEmulatedNdefData` property in `NdefEmulation`:
-```
-NdefEmulation(context).currentEmulatedNdefData = null
-```
+## Good to know
 
-## Supported message types
+- **Both phones must be unlocked.** For security, Android doesn't read NFC tags while the phone is locked.
+- **NFC must be on.** The app warns you and links to the NFC settings when it's off.
+- **iPhones** can read links. WiFi networks and contacts only work when the receiving phone is an Android phone. (Not tested on iPhone yet.)
+- **"Which app?" prompt on some Samsung phones.** Some recent Samsung models have a built-in service that answers NFC the same way. If Android asks which app to use, pick NFC Share. While NFC Share is open on screen, it is chosen automatically.
 
-| Type              | Class               | Android | iOS | Comment                                                                                                                                                                                                                                                                                                                 |
-|-------------------|---------------------|---------|-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Normal URI        | UriNdefData         | ✅       | ✅   | The standard URI. The most useful thing and something that you will probably use in 95% of cases. Any normal URI and URL can be used here. The transferred message can be used to trigger IPC, open apps, perform actions, etc. Perfectly and natively works on both Android and iOS                                    |
-| Location GEO-URI  | LocationNdefData    | ✅       | 🤷  | Geolocation point. Works natively on Android; however, to properly receive this kind of message on iOS, you must have an application that supports the `geo://` URI scheme installed (like "MapsMe" for instance)                                                                                                       |
-| Raw Text          | TextNdefData        | ❌       | ❌   | Simple raw text. While it is the simplest type of message, it cannot be interpreted out-of-the-box by neither Android nor iOS without the special software that will expect some specific content in it. The OS will read this message but will not parse it or do anything else                                        |
-| WiFi Connection   | WifiNetworkNdefData | ✅       | ❌   | Wifi access point connection data — name and password. Only OPEN (no password) and WPA/WPA2-PSK (standard password) types of wifi are supported. The EAP connections with user certificates are not supported. Works natively only on Android; iOS does not react to this type of message                               |
-| Phonebook Contact | ContactNdefData     | ✅       | ❌   | Phonebook contact data in the VCard format. Works natively only on Android; iOS does not react to this type of message                                                                                                                                                                                                  |
-| Another Raw NDEF  | NdefRecordData      | 🤷      | 🤷  | Any object of the NdefRecord class from the Android framework can be emulated. For example, you can receive an NDEF record by intent in your application and then set it to be emulated without even parsing it. Very useful, but whether it will be received or not on the reader side depends on the message contents |
+## Building
 
-- ✅ - Means that the mentioned OS can natively read and parse that type of message. You do not need any specific third-party applications on the device that will read the emulated tag. After the message is transferred to the reading device, you will see some notification that some action will be performed right away
-- ❌ - Means that the mentioned OS can natively read but will not parse that type of message and will not perform any actions after it. Some third-party applications may have the implementations that will handle this type of message but not the OS itself
-- 🤷 - Means that "it depends" The message will be read, but its further handling depends on extra circumstances
+You need JDK 17 and the Android SDK (platform 35). Android Studio is not required.
 
-## Code examples
-
-Some code examples of emulating the messages of various types
-<br>
-
-Send the Youtube video by the HTTP URL:
-```
-NdefEmulation(this).currentEmulatedNdefData = UriNdefData("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+```bash
+./gradlew :app:assemblePhoneDebug      # app/build/outputs/apk/phone/debug/
+./gradlew :app:assemblePhoneRelease    # needs signing/signing.properties (see below)
 ```
 
-Send the Youtube video by the deeplink URI:
-```
-NdefEmulation(this).currentEmulatedNdefData = UriNdefData("vnd.youtube://www.youtube.com/watch?v=dQw4w9WgXcQ")
-```
+Release builds are signed using `signing/signing.properties`. This file is not in the repository:
 
-Open the WhatsApp dialog by a phone number:
-```
-NdefEmulation(this).currentEmulatedNdefData = UriNdefData("https://wa.me/79123456789")
-```
-
-Open the Telegram dialog by a phone number:
-```
-NdefEmulation(this).currentEmulatedNdefData = UriNdefData("tg://msg?to=+79123456789")
+```properties
+app.keystore.file=signing/your-key.jks
+app.keystore.password=...
+app.key.alias=...
+app.key.password=...
 ```
 
-Send some raw text:
-```
-NdefEmulation(this).currentEmulatedNdefData = TextNdefData("Whiskey Tango Foxtrot")
-```
+## Credits and license
 
-Send the geolocation point:
-```
-NdefEmulation(this).currentEmulatedNdefData = LocationNdefData(12.345678, 78.654321)
-```
+NFC tag emulation is done by [ndef-emulator](https://github.com/LuigiVampa92/ndef-emulator) by **LuigiVampa92**. The modified copy of that library is in [`ndefemulation/`](./ndefemulation), together with its original documentation. See [NOTICE](./NOTICE) for what was changed.
 
-Send the WiFi access point name and password:
-```
-NdefEmulation(this).currentEmulatedNdefData = WifiNetworkNdefData("YourWifiName", WifiNetworkNdefDataProtectionType.PASSWORD, "YourWifiPassword")
-```
-
-Send the phonebook contact data:
-```
-NdefEmulation(this).currentEmulatedNdefData = ContactNdefData("John", "Doe", "+12345678900")
-```
-
-## Demo
-
-The demo applications can be found and downloaded in Releases.  
-
-You can download the demo apps for the latest library version [here](https://github.com/LuigiVampa92/ndef-emulator/releases/tag/release-1.0.0).
-
-There are versions for the [smartphones](https://github.com/LuigiVampa92/ndef-emulator/releases/download/release-1.0.0/ndef_emulation_demo_phone_release_1.0.0.apk) and for the [watches](https://github.com/LuigiVampa92/ndef-emulator/releases/download/release-1.0.0/ndef_emulation_demo_watch_release_1.0.0.apk)
-
-You can also build the demo applications yourself from the sources:
-```
-./gradlew clean assemblePhoneRelease
-./gradlew clean assembleWatchRelease
-```
-
-## Support
-
-* Star this GitHub repository ⭐
-
-## Feedback
-
-You can provide your feedback, suggest ideas for the new features or simply ask the questions here:
-- [Email](mailto:luigivampa92@gmail.com) ✉️
-- [Telegram](https://t.me/luigivampa92) 💬
-
-## License
-
-Please see the [LICENSE](LICENSE.md) for details.
+Licensed under the [Apache License 2.0](./LICENSE.md).

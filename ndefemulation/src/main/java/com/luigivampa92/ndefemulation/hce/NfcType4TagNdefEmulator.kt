@@ -28,6 +28,10 @@ internal class NfcType4TagNdefEmulator (ndefData: NdefData) : ApduExecutor {
     private var efCcSelected = false
     private var efNdefSelected = false
 
+    /** True once the reader has received the last byte of the NDEF file. */
+    var ndefFileFullyRead = false
+        private set
+
     init {
         val ndefMessageBuilder = NdefMessageFactory.getMessageBuilder(ndefData)
         ndefMessage = ndefMessageBuilder.build(ndefData) ?: NdefMessage(defineByteArrayOf())
@@ -124,6 +128,9 @@ internal class NfcType4TagNdefEmulator (ndefData: NdefData) : ApduExecutor {
                 val length = DataUtil.bytesToShort(cApdu.le)
                 val responseFull = DataUtil.concatByteArrays(ndefMessageBinarySize, ndefMessageBinary)
                 val responseChunk = responseFull.sliceArray(offset until offset + length)
+                if (offset + length >= responseFull.size) {
+                    ndefFileFullyRead = true
+                }
                 val response = ByteArray(responseChunk.size + ApduConstants.SW_OK.size)
                 System.arraycopy(responseChunk, 0, response, 0, responseChunk.size)
                 System.arraycopy(ApduConstants.SW_OK, 0, response, responseChunk.size, ApduConstants.SW_OK.size)

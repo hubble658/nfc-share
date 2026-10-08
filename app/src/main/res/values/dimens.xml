@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="size_text_buttons">15sp</dimen>
+    <dimen name="size_text_section_title">13sp</dimen>
+    <dimen name="size_text_header_title">22sp</dimen>
+    <dimen name="size_text_header_subtitle">14sp</dimen>
+    <dimen name="size_text_status_label">12sp</dimen>
+    <dimen name="size_text_status_value">16sp</dimen>
+    <dimen name="size_text_error">13sp</dimen>
+
+    <dimen name="size_margin_vertical_buttons">6dp</dimen>
+    <dimen name="size_margin_horizontal_buttons">6dp</dimen>
+    <dimen name="size_margin_screen">16dp</dimen>
+    <dimen name="size_margin_section_top">20dp</dimen>
+
+    <dimen name="size_button_min_height">48dp</dimen>
+    <dimen name="size_button_padding_vertical">10dp</dimen>
+    <dimen name="size_card_padding">14dp</dimen>
+    <dimen name="size_corner_radius_button">4dp</dimen>
+    <dimen name="size_corner_radius_card">6dp</dimen>
+    <dimen name="size_status_dot">10dp</dimen>
+    <dimen name="size_text_body">14sp</dimen>
+    <dimen name="size_about_icon">24dp</dimen>
+</resources>

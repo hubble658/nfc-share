@@ -44,9 +44,17 @@ import com.luigivampa92.ndefemulation.ndef.NdefDataSerializer
 @SuppressLint("ApplySharedPref")
 class NdefEmulation(context: Context) {
 
-    private companion object {
+    companion object {
         private const val PREF_FILE_NAME = "nfc_ndef_emulation"
         private const val PREF_KEY_EMULATION_DATA = "emulation_ndef_data"
+        private const val PREF_KEY_EXPIRES_AT = "emulation_expires_at"
+        private const val PREF_KEY_READ_COUNT = "emulation_read_count"
+
+        /**
+         * Broadcast (restricted to the host app's own package) sent every time a reader
+         * has fully read the emulated NDEF message.
+         */
+        const val ACTION_NDEF_READ = "com.luigivampa92.ndefemulation.action.NDEF_READ"
     }
 
     private val storage = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE)
@@ -61,9 +69,34 @@ class NdefEmulation(context: Context) {
         get() = NdefDataSerializer.deserializeData(storage.getString(PREF_KEY_EMULATION_DATA, null))
         set(value) {
             if (value != null) {
-                storage.edit().putString(PREF_KEY_EMULATION_DATA, NdefDataSerializer.serializeData(value)).commit()
+                storage.edit()
+                    .putString(PREF_KEY_EMULATION_DATA, NdefDataSerializer.serializeData(value))
+                    .remove(PREF_KEY_EXPIRES_AT)
+                    .remove(PREF_KEY_READ_COUNT)
+                    .commit()
             } else {
                 storage.edit().clear().commit()
             }
         }
+
+    /**
+     * Wall-clock time (System.currentTimeMillis) after which the emulation stops by itself,
+     * or 0 for no limit. Reset to 0 whenever new data is assigned, so set it afterwards.
+     */
+    var expiresAtMillis: Long
+        get() = storage.getLong(PREF_KEY_EXPIRES_AT, 0L)
+        set(value) {
+            storage.edit().putLong(PREF_KEY_EXPIRES_AT, value).commit()
+        }
+
+    val isExpired: Boolean
+        get() = expiresAtMillis in 1..System.currentTimeMillis()
+
+    /** How many times the current data has been fully read by a reader. */
+    val readCount: Int
+        get() = storage.getInt(PREF_KEY_READ_COUNT, 0)
+
+    internal fun incrementReadCount() {
+        storage.edit().putInt(PREF_KEY_READ_COUNT, readCount + 1).commit()
+    }
 }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_black">#FF000000</color>
+    <color name="color_white">#FFFFFFFF</color>
+
+    <color name="color_background_screen">#FFF2F2F2</color>
+
+    <color name="color_background">@color/color_white</color>
+    <color name="color_text">@color/color_black</color>
+
+    <color name="color_surface">@color/color_white</color>
+    <color name="color_outline">#FFDBDBDB</color>
+    <color name="color_hint">#FF6E6E6E</color>
+    <color name="color_section_title">#FF5A5A5A</color>
+
+    <color name="color_primary">#FF3366F0</color>
+    <color name="color_on_primary">@color/color_white</color>
+
+    <color name="color_danger">#FFD64545</color>
+
+    <color name="color_status_active">#FF1F7A3D</color>
+    <color name="color_status_inactive">#FFBDBDBD</color>
+
+    <color name="color_ripple_on_primary">#33FFFFFF</color>
+    <color name="color_ripple_on_surface">#14000000</color>
+
+    <color name="color_row">@color/color_white</color>
+    <color name="color_row_active">#FFEAF7EE</color>
+    <color name="color_input_fill">#00000000</color>
+    <color name="color_input_stroke">#FF8A8A8A</color>
+    <color name="color_primary_container">#FFDCE4FF</color>
+    <color name="color_on_primary_container">#FF1B3A9E</color>
+</resources>

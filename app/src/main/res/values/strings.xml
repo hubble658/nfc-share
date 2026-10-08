@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Default (English) UI, used for every language except Turkish (values-tr). -->
+<resources>
+    <string name="header_title">NFC Share</string>
+    <string name="nfc_type4_tag_emulation_service_name">NFC Share</string>
+    <string name="status_timer_unlimited">∞</string>
+    <string name="about_button_github">github.com/hubble658</string>
+
+    <string name="header_subtitle">Hold your phone against another phone to send a link, a WiFi network or a contact.</string>
+    <string name="status_value_empty">Nothing is being shared right now</string>
+    <string name="status_value_uri">Link: %1$s</string>
+    <string name="status_value_text">Text: %1$s</string>
+    <string name="status_value_geo">Location: %1$s, %2$s</string>
+    <string name="status_value_wifi">WiFi: %1$s</string>
+    <string name="status_value_contact">Contact: %1$s</string>
+
+    <string name="tab_link">Link</string>
+    <string name="tab_wifi">WiFi</string>
+    <string name="tab_contact">Contact</string>
+
+    <string name="hint_link">Type or paste a link or some text</string>
+    <string name="toast_link_removed">Saved link deleted</string>
+    <string name="label_wifi_open_suffix"> (open)</string>
+    <string name="hint_wifi_ssid">Network name</string>
+    <string name="hint_wifi_password">Password (at least 8 characters)</string>
+    <string name="label_wifi_open">Open network (no password)</string>
+    <string name="button_use_current_wifi">Use the WiFi I\'m Connected To</string>
+    <string name="info_wifi_password_manual">You only need to type the password once, it\'s remembered for this network.</string>
+    <string name="error_wifi_permission_denied">Location permission is needed to see the name of your network</string>
+    <string name="error_wifi_not_connected">You\'re not connected to a WiFi network</string>
+    <string name="toast_network_removed">Saved network deleted</string>
+
+    <string name="button_pick_contact">Pick From Contacts</string>
+    <string name="hint_contact_first">First name</string>
+    <string name="hint_contact_last">Last name (optional)</string>
+    <string name="hint_contact_phone">Phone (optional)</string>
+    <string name="hint_contact_email">Email (optional)</string>
+
+    <string name="button_share">SHARE</string>
+    <string name="button_clear">STOP</string>
+
+    <string name="error_empty_url">Enter a link or some text first</string>
+    <string name="error_invalid_url">This link wasn\'t recognized or is too long</string>
+    <string name="error_invalid_phone">Enter a valid phone number</string>
+    <string name="error_empty_ssid">Enter the network name (up to 32 characters)</string>
+    <string name="error_short_password">The password must be 8 to 64 characters</string>
+    <string name="error_empty_first_name">Enter at least a first name</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_location_services_off">Location is off. Turn on your phone\'s location to see the connected network.</string>
+    <string name="error_contacts_permission_denied">Contacts permission is needed to pick from your contacts</string>
+
+    <string name="toast_cleared">Sharing stopped</string>
+    <string name="toast_shared">Sharing started</string>
+
+    <string name="widget_config_title">What should this widget share?</string>
+    <string name="widget_config_empty">Nothing saved yet. Share a link, network or contact in the app and it\'s saved automatically.</string>
+    <string name="widget_not_configured">Not set</string>
+    <string name="widget_clipboard_label">Share Copied</string>
+    <string name="error_clipboard_empty">There\'s no copied link or text</string>
+
+    <string name="status_label_idle">NOT SHARING</string>
+    <string name="status_label_active">SHARING</string>
+    <string name="status_reads_none">Not read yet. Hold the backs of the two phones together.</string>
+    <string name="status_reads_count">Read %1$d time(s) · still sharing</string>
+    <string name="toast_read">Read</string>
+    <string name="toast_expired">Time\'s up, sharing stopped</string>
+    <string name="label_duration">TIME</string>
+    <string name="duration_seconds">%1$d s</string>
+    <string name="duration_minutes">%1$d min</string>
+    <string name="duration_unlimited">No limit</string>
+
+    <string name="section_new_link">LINK OR TEXT</string>
+    <string name="section_new_network">WIFI NETWORK</string>
+    <string name="section_new_contact">CONTACT</string>
+    <string name="section_saved">SAVED</string>
+    <string name="hint_saved">Tap: share  ·  Hold: options</string>
+    <string name="button_paste">Paste</string>
+    <string name="info_text_receiver">If the other phone also has this app, a \"Copy Text\" option appears when the text arrives.</string>
+    <string name="toast_contact_removed">Saved contact deleted</string>
+
+    <string name="button_shizuku_import">Import All WiFi Networks With Passwords</string>
+    <string name="shizuku_status_unsupported">This feature needs Android 11 or newer.</string>
+    <string name="shizuku_status_not_installed">With the Shizuku app you can import every WiFi network saved on this phone at once. No root needed.</string>
+    <string name="shizuku_status_not_running">Shizuku is installed but not running. Tap the button to open it, press \"Start\" there, then come back.</string>
+    <string name="shizuku_status_no_permission">Shizuku is running. Tapping the button will ask you to allow NFC Share.</string>
+    <string name="shizuku_status_ready">✓ Shizuku ready ✓</string>
+    <string name="toast_shizuku_imported">%1$d networks imported with passwords (%2$d new)</string>
+    <string name="error_shizuku_failed">Couldn\'t import networks: %1$s</string>
+    <string name="error_shizuku_denied">Shizuku permission wasn\'t granted</string>
+
+    <string name="received_title">Received Text</string>
+    <string name="button_copy">Copy Text</string>
+    <string name="button_open_link">Open Link</string>
+    <string name="button_close">Close</string>
+    <string name="toast_copied">Copied</string>
+
+    <string name="widget_saved_item_name">Saved Item</string>
+    <string name="widget_saved_item_description">Share or stop a saved link, network or contact with one tap</string>
+    <string name="widget_clipboard_name">Share Copied</string>
+    <string name="widget_clipboard_description">Share the link or text you copied over NFC with one tap</string>
+
+    <string name="action_edit">Edit</string>
+    <string name="action_copy">Copy</string>
+    <string name="action_delete">Delete</string>
+    <string name="toast_editing">Make your changes and tap SHARE, it replaces the old entry</string>
+
+    <string name="button_settings">Settings</string>
+    <string name="about_title">Settings</string>
+    <string name="about_version">NFC Share · Version %1$s</string>
+    <string name="about_section_privacy">PRIVACY</string>
+    <string name="about_section_permissions">WHY PERMISSIONS ARE NEEDED</string>
+    <string name="about_back">Back</string>
+    <string name="about_privacy_internet_title">No internet permission</string>
+    <string name="about_privacy_internet_body">The links, WiFi passwords and contacts you save are stored only on this phone. They are never sent to any server.</string>
+    <string name="about_privacy_nfc_title">Only sent when you tap</string>
+    <string name="about_privacy_nfc_body">Data is only transferred over NFC when you hold your phone against another device. Sharing stops by itself when the time you picked runs out.</string>
+    <string name="about_permission_location_title">Location</string>
+    <string name="about_permission_location_body">Android only shows the name of your connected WiFi network to apps with location permission. NFC Share never reads or stores your location.</string>
+    <string name="about_permission_contacts_title">Contacts</string>
+    <string name="about_permission_contacts_body">Only used when you tap \"Pick From Contacts\", to fill in the name, number and email of the contact you pick.</string>
+    <string name="about_permission_nfc_title">NFC</string>
+    <string name="about_permission_nfc_body">Used to send what you picked to the phone you hold it against.</string>
+    <string name="about_permission_shizuku_title">Shizuku (optional)</string>
+    <string name="about_permission_shizuku_body">Used to import every WiFi network saved on this phone at once. Shizuku can be removed after importing once.</string>
+
+    <string name="nfc_off">NFC is off. Nothing can be sent until you turn it on.</string>
+    <string name="nfc_missing">This phone has no NFC, so it can\'t share.</string>
+    <string name="nfc_no_hce">This phone\'s NFC can\'t send data to other devices.</string>
+    <string name="nfc_open_settings">Turn On NFC</string>
+    <string name="about_section_wifi">WIFI PASSWORDS</string>
+    <string name="link_shizuku_settings">To import all saved WiFi networks with Shizuku, see Settings ›</string>
+    <string name="about_unlock_note">Both phones need to be unlocked. For security, Android doesn\'t read NFC while a phone is locked.</string>
+    <string name="about_shizuku_title">Bulk import with Shizuku</string>
+    <string name="about_optional">Optional</string>
+</resources>

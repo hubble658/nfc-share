@@ -1,0 +1,16 @@
+NFC Share
+Copyright 2026 hubble658
+
+This product includes a modified copy of "ndef-emulator"
+(https://github.com/LuigiVampa92/ndef-emulator) by LuigiVampa92,
+licensed under the Apache License, Version 2.0.
+
+Changes made to that library (ndefemulation/):
+- Optional expiry time for the emulated data; the HCE service stops
+  answering once it has passed.
+- A read counter and a broadcast (ACTION_NDEF_READ) sent each time a
+  reader has fully read the NDEF message.
+- A short cooldown after a complete read so a reader does not open the
+  same content twice.
+
+The original demo application was replaced by the NFC Share app (app/).
