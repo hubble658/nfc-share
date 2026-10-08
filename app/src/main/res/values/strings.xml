@@ -4,7 +4,7 @@
     <string name="header_title">NFC Share</string>
     <string name="nfc_type4_tag_emulation_service_name">NFC Share</string>
     <string name="status_timer_unlimited">∞</string>
-    <string name="about_button_github">github.com/hubble658</string>
+    <string name="about_button_github">github.com/hubble658/nfc-share</string>
 
     <string name="header_subtitle">Hold your phone against another phone to send a link, a WiFi network or a contact.</string>
     <string name="status_value_empty">Nothing is being shared right now</string>

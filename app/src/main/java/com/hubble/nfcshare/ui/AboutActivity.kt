@@ -24,7 +24,7 @@ import rikka.shizuku.Shizuku
 class AboutActivity : BaseActivity() {
 
     private companion object {
-        private const val GITHUB_URL = "https://github.com/hubble658"
+        private const val GITHUB_URL = "https://github.com/hubble658/nfc-share"
         private const val SHIZUKU_DOWNLOAD_URL = "https://shizuku.rikka.app/download/"
         private const val REQUEST_CODE_SHIZUKU = 1005
     }
