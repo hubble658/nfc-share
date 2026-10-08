@@ -6,6 +6,16 @@ Hold your phone against another phone to send a **link**, a **WiFi network** (wi
 
 NFC Share makes your phone act like an NFC tag. The other phone reads it the same way it would read a sticker or a card: a link opens in its app (YouTube links open in YouTube, Maps links in Maps), a WiFi network shows a "connect" prompt, and a contact opens the "add contact" screen.
 
+## Download
+
+**[⬇ Download the latest version](https://github.com/hubble658/nfc-share/releases/latest)**
+
+1. On the release page, download the `NFC-Share-x.y.z.apk` file under **Assets**.
+2. Open the downloaded file. If Android asks, allow installing apps from this source (usually your browser or file manager).
+3. Tap **Install**.
+
+Requires Android 5.0 or newer and a phone with NFC.
+
 ## Features
 
 - **Links and text.** Paste anything and the type is detected automatically: YouTube, Instagram, Google Maps or any other URL. A Maps link is sent as a real location.

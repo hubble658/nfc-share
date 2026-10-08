@@ -10,6 +10,16 @@ NFC Share telefonunu bir NFC etiketi gibi davrandırır. Karşı telefon onu bir
 - WiFi ağı için "bağlan" penceresi çıkar.
 - Kişi için "kişi ekle" ekranı açılır.
 
+## İndir
+
+**[⬇ En son sürümü indir](https://github.com/hubble658/nfc-share/releases/latest)**
+
+1. Açılan sayfada **Assets** altındaki `NFC-Share-x.y.z.apk` dosyasını indir.
+2. İndirilen dosyayı aç. Android sorarsa bu kaynaktan (genelde tarayıcın ya da dosya yöneticin) uygulama yüklemeye izin ver.
+3. **Yükle**'ye bas.
+
+Android 5.0 ya da üstü ve NFC'li bir telefon gerekir.
+
 ## Özellikler
 
 - **Link ve yazı:** Ne yapıştırırsan yapıştır türü otomatik tanınır: YouTube, Instagram, Google Maps ya da herhangi bir link. Maps linkleri gerçek konum olarak gider.
