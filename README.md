@@ -6,6 +6,12 @@ Hold your phone against another phone to send a **link**, a **WiFi network** (wi
 
 NFC Share makes your phone act like an NFC tag. The other phone reads it the same way it would read a sticker or a card: a link opens in its app (YouTube links open in YouTube, Maps links in Maps), a WiFi network shows a "connect" prompt, and a contact opens the "add contact" screen.
 
+<p align="center">
+  <img src="docs/screenshots/link-sharing.jpg" height="560" alt="Sharing a link: live status with countdown and saved items">
+  &nbsp;&nbsp;
+  <img src="docs/screenshots/wifi.jpg" height="560" alt="WiFi tab: share the connected network with its password">
+</p>
+
 ## Download
 
 **[⬇ Download the latest version](https://github.com/hubble658/nfc-share/releases/latest)**

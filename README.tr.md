@@ -10,6 +10,12 @@ NFC Share telefonunu bir NFC etiketi gibi davrandırır. Karşı telefon onu bir
 - WiFi ağı için "bağlan" penceresi çıkar.
 - Kişi için "kişi ekle" ekranı açılır.
 
+<p align="center">
+  <img src="docs/screenshots/link-sharing.jpg" height="560" alt="Link paylaşımı: geri sayımlı yayın durumu ve kayıtlı öğeler">
+  &nbsp;&nbsp;
+  <img src="docs/screenshots/wifi.jpg" height="560" alt="WiFi sekmesi: bağlı ağı şifresiyle paylaş">
+</p>
+
 ## İndir
 
 **[⬇ En son sürümü indir](https://github.com/hubble658/nfc-share/releases/latest)**
