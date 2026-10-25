@@ -11,9 +11,9 @@ NFC Share telefonunu bir NFC etiketi gibi davrandırır. Karşı telefon onu bir
 - Kişi için "kişi ekle" ekranı açılır.
 
 <p align="center">
-  <img src="docs/screenshots/link-sharing.jpg" height="560" alt="Link paylaşımı: geri sayımlı yayın durumu ve kayıtlı öğeler">
+  <img src="docs/screenshots/link-sharing.jpg" width="300" alt="Link paylaşımı: geri sayım, okunma sayacı ve kayıtlı öğeler">
   &nbsp;&nbsp;
-  <img src="docs/screenshots/wifi.jpg" height="560" alt="WiFi sekmesi: bağlı ağı şifresiyle paylaş">
+  <img src="docs/screenshots/wifi.jpg" width="300" alt="WiFi sekmesi: bağlı ağı şifresiyle paylaş">
 </p>
 
 ## İndir
